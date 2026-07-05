@@ -125,11 +125,8 @@ img{max-width:100%;display:block}
   backdrop-filter:saturate(180%) blur(12px);
   border-bottom-color:var(--border);box-shadow:var(--sh-sm)}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:76px}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-h);font-weight:600;font-size:1.05rem}
-.brand__icon{width:32px;height:32px;flex:none}
-.brand__word{text-transform:uppercase;letter-spacing:.07em;color:var(--primary-800)}
-.brand__word b{color:var(--accent-600);font-weight:600}
-.footer .brand__word{color:#fff}
+.brand{display:flex;align-items:center}
+.brand img{height:40px;width:auto;display:block}
 .nav__links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav__links a{color:var(--text-2);font-weight:500;font-family:var(--font-h);font-size:.95rem;position:relative;padding-block:.25rem}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent-600);transition:width .2s ease}
@@ -294,6 +291,13 @@ img{max-width:100%;display:block}
   .footer__grid,.footer__bottom{grid-template-columns:1fr}
   .footer__bottom{justify-content:flex-start}
 }
+@media (max-width:600px){
+  .brand img{height:30px;width:auto}
+  /* WhatsApp del nav pasa a solo ícono: el logo completo + botón con texto
+     no entran en 375px */
+  .nav__cta .btn--cta .btn__label{display:none}
+  .nav__cta .btn--cta{padding:.75rem .85rem}
+}
 @media (max-width:480px){
   .hero__actions{flex-direction:column;align-items:stretch}
   .hero__actions .btn{width:100%}
@@ -395,18 +399,7 @@ img{max-width:100%;display:block}
 <header class="nav" id="nav">
   <div class="container nav__inner">
     <a class="brand" href="#top" aria-label="PsiqueMind, inicio">
-      <svg class="brand__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-        <g stroke-linecap="round" stroke-width="3">
-          <path d="M24 24 39 19" stroke="#13375A"/><path d="M24 24 33 9" stroke="#2FA3B4"/>
-          <path d="M24 24 12 12" stroke="#56A944"/><path d="M24 24 8 27" stroke="#2C74A6"/>
-          <path d="M24 24 15 38" stroke="#2FA3B4"/><path d="M24 24 33 38" stroke="#56A944"/>
-        </g>
-        <circle cx="39" cy="19" r="5" fill="#13375A"/><circle cx="33" cy="9" r="4" fill="#2FA3B4"/>
-        <circle cx="12" cy="12" r="4.5" fill="#56A944"/><circle cx="8" cy="27" r="3.5" fill="#2C74A6"/>
-        <circle cx="15" cy="38" r="4" fill="#2FA3B4"/><circle cx="33" cy="38" r="3.5" fill="#56A944"/>
-        <circle cx="24" cy="24" r="5.5" fill="#1B4A72"/>
-      </svg>
-      <span class="brand__word">Psique<b>Mind</b></span>
+      <img src="../assets/img/logo.svg" width="214" height="40" alt="PsiqueMind — Centro Neuropsicológico Clínico" />
     </a>
     <nav aria-label="Principal">
       <ul class="nav__links">
@@ -420,7 +413,7 @@ img{max-width:100%;display:block}
     <div class="nav__cta">
       <a class="btn btn--cta" href="https://wa.me/593979734997?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20una%20evaluaci%C3%B3n%20para%20mi%20hijo%2Fa." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.06h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.88.86-.88 2.07 0 1.22.9 2.4 1.02 2.56.12.17 1.75 2.67 4.25 3.75.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
-        WhatsApp
+        <span class="btn__label">WhatsApp</span>
       </a>
       <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
@@ -641,18 +634,7 @@ img{max-width:100%;display:block}
     <div class="footer__grid">
       <div class="footer__brand">
         <a class="brand" href="#top">
-          <svg class="brand__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <g stroke-linecap="round" stroke-width="3">
-              <path d="M24 24 39 19" stroke="#5A87B0"/><path d="M24 24 33 9" stroke="#2FA3B4"/>
-              <path d="M24 24 12 12" stroke="#56A944"/><path d="M24 24 8 27" stroke="#2C74A6"/>
-              <path d="M24 24 15 38" stroke="#2FA3B4"/><path d="M24 24 33 38" stroke="#56A944"/>
-            </g>
-            <circle cx="39" cy="19" r="5" fill="#5A87B0"/><circle cx="33" cy="9" r="4" fill="#2FA3B4"/>
-            <circle cx="12" cy="12" r="4.5" fill="#56A944"/><circle cx="8" cy="27" r="3.5" fill="#2C74A6"/>
-            <circle cx="15" cy="38" r="4" fill="#2FA3B4"/><circle cx="33" cy="38" r="3.5" fill="#56A944"/>
-            <circle cx="24" cy="24" r="5.5" fill="#43B7C6"/>
-          </svg>
-          <span class="brand__word">Psique<b>Mind</b></span>
+          <img src="../assets/img/logo-blanco.svg" width="214" height="40" alt="PsiqueMind — Centro Neuropsicológico Clínico" />
         </a>
         <p>Neuropsicología Clínica Infantil. Comprender antes de diagnosticar.</p>
         <div class="footer__social">
