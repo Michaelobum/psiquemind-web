@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PsiqueMind — Neuropsicología Clínica Infantil</title>
+<meta name="description" content="No todo es Autismo o TDAH. Cada niño tiene una historia diferente. Evaluación neuropsicológica infantil basada en evidencia científica." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+/* =========================================================
+   PsiqueMind — Demo (single-file)
+   Design system: UI-UX Pro Max engine + docs/04_UI.md
+   Pattern: Minimal Single Column · Style: Accessible & Ethical
+   ========================================================= */
+
+:root{
+  /* Color — Primary (azul marino del logo PsiqueMind) */
+  --primary-900:#0C2A43; --primary-800:#13375A; --primary-700:#1B4A72;
+  --primary-600:#215C8C; --primary-500:#2C74A6;
+  /* Accent — turquesa del logo PsiqueMind */
+  --accent-600:#2FA3B4; --accent-500:#43B7C6; --accent-300:#A6DEE4; --accent-100:#E3F5F6;
+  /* Verde salud / WhatsApp (único CTA de conversión) */
+  --cta:#128C4B; --cta-hover:#0E7440; --whatsapp:#25D366;
+  /* Neutros */
+  --white:#FFFFFF; --neutral-50:#F7F9FB; --neutral-100:#EEF2F6; --neutral-200:#E1E7EE;
+  --neutral-300:#CBD5E0; --neutral-500:#6B7B8C; --neutral-600:#4A5A6B;
+  --neutral-800:#1F2A36; --neutral-900:#121A22;
+  /* Aliases semánticos */
+  --bg-page:var(--white); --bg-subtle:var(--neutral-50); --surface:var(--white);
+  --border:var(--neutral-200); --text:var(--neutral-800); --text-2:var(--neutral-600);
+  --text-3:var(--neutral-500); --heading:var(--primary-800); --link:var(--primary-700);
+  --focus:var(--accent-600);
+  /* Radios */
+  --r-sm:6px; --r-md:10px; --r-lg:16px; --r-xl:24px; --r-full:9999px;
+  /* Sombras (mínimas) */
+  --sh-sm:0 1px 2px rgba(18,26,34,.04),0 2px 8px rgba(18,26,34,.04);
+  --sh-md:0 4px 16px rgba(18,26,34,.06),0 8px 32px rgba(18,26,34,.05);
+  /* Tipografía */
+  --font-h:"Lexend",system-ui,sans-serif;
+  --font-b:"Source Sans 3",system-ui,sans-serif;
+  /* Espaciado */
+  --sp-section:clamp(4rem,10vw,8rem);
+  --maxw:1200px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  font-family:var(--font-b);
+  font-size:1.0625rem; line-height:1.65; color:var(--text);
+  background:var(--bg-page);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+
+h1,h2,h3,h4{font-family:var(--font-h);color:var(--heading);line-height:1.15;font-weight:500;letter-spacing:-.01em}
+h1{font-size:clamp(2.25rem,5.5vw,3.5rem)}
+h2{font-size:clamp(1.75rem,4vw,2.5rem)}
+h3{font-size:clamp(1.25rem,2.5vw,1.5rem);font-weight:600}
+p{max-width:65ch}
+a{color:var(--link);text-decoration:none}
+img{max-width:100%;display:block}
+
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(1.25rem,4vw,2.5rem)}
+.section{padding-block:var(--sp-section)}
+.section--subtle{background:var(--bg-subtle)}
+.eyebrow{font-family:var(--font-b);font-weight:600;font-size:.8125rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--accent-600);display:inline-block;margin-bottom:.75rem}
+.lead{font-size:1.1875rem;color:var(--text-2);max-width:60ch}
+.center{text-align:center}.center p{margin-inline:auto}
+
+/* ---------- Accesibilidad ---------- */
+.skip{position:absolute;left:-9999px;top:0;background:var(--primary-800);color:#fff;
+  padding:.75rem 1.25rem;border-radius:0 0 var(--r-md) 0;z-index:2000}
+.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* ---------- Botones ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;
+  min-height:48px;padding:.75rem 1.5rem;border-radius:var(--r-md);
+  font-family:var(--font-h);font-weight:600;font-size:1rem;cursor:pointer;border:1px solid transparent;
+  transition:background-color .18s ease,transform .18s ease,box-shadow .18s ease,color .18s ease}
+.btn:active{transform:scale(.98)}
+.btn--cta{background:var(--cta);color:#fff}
+.btn--cta:hover{background:var(--cta-hover);box-shadow:var(--sh-sm)}
+.btn--ghost{background:transparent;color:var(--primary-700);border-color:var(--primary-700)}
+.btn--ghost:hover{background:var(--primary-700);color:#fff}
+.btn--lg{min-height:56px;padding:.9rem 2rem;font-size:1.0625rem}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* ---------- Navbar ---------- */
+.nav{position:sticky;top:0;z-index:100;transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease;
+  border-bottom:1px solid transparent}
+.nav.is-solid{background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);
+  border-bottom-color:var(--border);box-shadow:var(--sh-sm)}
+.nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:76px}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-h);font-weight:600;
+  font-size:1.2rem;color:var(--primary-800);letter-spacing:-.01em}
+.brand__mark{width:36px;height:36px;border-radius:var(--r-md);display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--primary-700),var(--accent-600));color:#fff;flex:none}
+.brand__mark svg{width:20px;height:20px}
+.nav__links{display:flex;align-items:center;gap:2rem;list-style:none}
+.nav__links a{color:var(--text-2);font-weight:500;font-family:var(--font-h);font-size:.95rem;position:relative;padding-block:.25rem}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent-600);transition:width .2s ease}
+.nav__links a:hover{color:var(--primary-700)}
+.nav__links a:hover::after{width:100%}
+.nav__cta{display:flex;align-items:center;gap:.75rem}
+.nav__toggle{display:none;background:none;border:0;cursor:pointer;padding:.5rem;color:var(--primary-800)}
+.nav__toggle svg{width:28px;height:28px}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(120% 90% at 85% -10%,var(--accent-100),transparent 60%),var(--white)}
+.hero__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;
+  padding-block:clamp(3rem,8vw,6rem)}
+.hero h1{margin-bottom:1.25rem}
+.hero .lead{margin-bottom:2rem}
+.hero__actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.hero__note{margin-top:1.5rem;font-size:.9rem;color:var(--text-3);display:flex;align-items:center;gap:.5rem}
+.hero__note svg{width:18px;height:18px;color:var(--accent-600);flex:none}
+.hero__media{position:relative;border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-md);aspect-ratio:4/5}
+
+/* Placeholder de foto real (sin stock) */
+.photo{position:relative;width:100%;height:100%;
+  background:linear-gradient(160deg,var(--primary-700),var(--primary-900));
+  display:grid;place-items:center;color:rgba(255,255,255,.7)}
+.photo::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:22px 22px}
+.photo__label{position:relative;z-index:1;text-align:center;font-family:var(--font-h);font-size:.85rem;
+  letter-spacing:.04em;padding:1rem;max-width:80%}
+.photo__label svg{width:34px;height:34px;margin:0 auto .6rem;opacity:.8}
+.media-img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---------- Problema ---------- */
+.problem__quote{font-family:var(--font-h);font-weight:400;font-size:clamp(1.5rem,3.5vw,2.25rem);
+  line-height:1.35;color:var(--primary-800);max-width:24ch;margin-bottom:1.5rem}
+.problem__quote strong{color:var(--accent-600);font-weight:600}
+
+/* ---------- Grid genérico de cards ---------- */
+.grid{display:grid;gap:1.5rem}
+.grid--3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:2rem;transition:transform .2s ease,box-shadow .2s ease}
+.card--hover:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.card__icon{width:52px;height:52px;border-radius:var(--r-md);display:grid;place-items:center;
+  background:var(--accent-100);color:var(--accent-600);margin-bottom:1.25rem}
+.card__icon svg{width:26px;height:26px}
+.card h3{margin-bottom:.6rem}
+.card p{color:var(--text-2);font-size:1rem}
+
+/* ---------- Profesional ---------- */
+.pro{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.pro__media{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-md);aspect-ratio:4/5}
+.pro__list{list-style:none;margin-top:1.5rem;display:grid;gap:.85rem}
+.pro__list li{display:flex;gap:.75rem;color:var(--text-2)}
+.pro__list svg{width:22px;height:22px;color:var(--cta);flex:none;margin-top:.15rem}
+
+/* ---------- Certificaciones (banda) ---------- */
+.stats{background:var(--primary-900);color:#fff}
+.stats .container{text-align:center}
+.stats__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.stat__num{font-family:var(--font-h);font-weight:600;font-size:clamp(2.5rem,6vw,3.5rem);
+  color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+.stat__num .plus{color:var(--accent-500)}
+.stat__label{margin-top:.5rem;color:rgba(255,255,255,.7);font-size:.95rem;letter-spacing:.02em}
+.creds{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:2.5rem}
+.creds span{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.18);
+  border-radius:var(--r-full);padding:.5rem 1rem;font-size:.9rem;color:rgba(255,255,255,.9)}
+.creds svg{width:16px;height:16px;color:var(--accent-500);flex:none}
+
+/* ---------- Galería clínica ---------- */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.gallery .tile{border-radius:var(--r-lg);overflow:hidden;aspect-ratio:3/2;box-shadow:var(--sh-sm)}
+.gallery .tile:first-child{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+
+/* ---------- Proceso (stepper) ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:step}
+.step{position:relative;padding-top:.5rem}
+.step__num{width:48px;height:48px;border-radius:var(--r-full);background:var(--primary-700);color:#fff;
+  font-family:var(--font-h);font-weight:600;display:grid;place-items:center;margin-bottom:1rem;position:relative;z-index:1}
+.step:not(:last-child)::after{content:"";position:absolute;top:24px;left:48px;right:-1.5rem;height:2px;
+  background:var(--accent-300)}
+.step h3{font-size:1.15rem;margin-bottom:.4rem}
+.step p{color:var(--text-2);font-size:.98rem}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:760px;margin-inline:auto}
+.faq__item{border-bottom:1px solid var(--border)}
+.faq__q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:none;border:0;cursor:pointer;text-align:left;padding:1.4rem 0;
+  font-family:var(--font-h);font-weight:600;font-size:1.1rem;color:var(--primary-800)}
+.faq__q svg{width:24px;height:24px;color:var(--accent-600);flex:none;transition:transform .2s ease}
+.faq__q[aria-expanded="true"] svg{transform:rotate(45deg)}
+.faq__a{overflow:hidden;max-height:0;transition:max-height .28s ease}
+.faq__a-inner{padding:0 0 1.4rem;color:var(--text-2)}
+
+/* ---------- CTA final ---------- */
+.cta-final{background:linear-gradient(160deg,var(--primary-800),var(--primary-900));color:#fff;text-align:center}
+.cta-final h2{color:#fff;margin-bottom:1rem}
+.cta-final p{color:rgba(255,255,255,.8);margin:0 auto 2rem}
+.cta-final .btn--cta{box-shadow:0 8px 30px rgba(18,140,75,.35)}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--neutral-900);color:var(--neutral-300);padding-block:3.5rem 2rem}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem}
+.footer h4{color:#fff;font-size:1rem;margin-bottom:1rem;font-family:var(--font-h)}
+.footer ul{list-style:none;display:grid;gap:.6rem}
+.footer a{color:var(--neutral-300)}.footer a:hover{color:#fff}
+.footer__brand p{color:var(--neutral-500);font-size:.95rem;margin-top:.75rem}
+.footer__social{display:flex;gap:.75rem;margin-top:1rem}
+.footer__social a{width:40px;height:40px;border-radius:var(--r-md);border:1px solid rgba(255,255,255,.14);
+  display:grid;place-items:center}
+.footer__social svg{width:20px;height:20px}
+.footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--neutral-500)}
+
+/* ---------- WhatsApp flotante ---------- */
+.wa-float{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:60px;height:60px;
+  border-radius:var(--r-full);background:var(--whatsapp);color:#fff;display:grid;place-items:center;
+  box-shadow:0 8px 24px rgba(37,211,102,.4);transition:transform .2s ease}
+.wa-float:hover{transform:scale(1.06)}
+.wa-float svg{width:32px;height:32px}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Header de sección ---------- */
+.s-head{max-width:640px;margin-bottom:3rem}
+.s-head.center{margin-inline:auto}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width:960px){
+  .hero__grid,.pro{grid-template-columns:1fr}
+  .hero__media,.pro__media{order:-1;max-width:440px;margin-inline:auto;aspect-ratio:16/10;width:100%}
+  .grid--3{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(2)::after{display:none}
+}
+@media (max-width:720px){
+  .nav__links,.nav__cta .btn--ghost{display:none}
+  .nav__toggle{display:block}
+  .nav[data-open="true"] .nav__links{display:flex;position:absolute;top:76px;left:0;right:0;
+    flex-direction:column;gap:1.25rem;background:#fff;padding:1.5rem 1.5rem 2rem;border-bottom:1px solid var(--border);box-shadow:var(--sh-md)}
+  .grid--3,.gallery,.stats__grid{grid-template-columns:1fr}
+  .gallery .tile:first-child{grid-column:span 1;grid-row:span 1;aspect-ratio:3/2}
+  .steps{grid-template-columns:1fr}
+  .step:not(:last-child)::after{display:none}
+  .footer__grid,.footer__bottom{grid-template-columns:1fr}
+  .footer__bottom{justify-content:flex-start}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a class="brand" href="#top" aria-label="PsiqueMind, inicio">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2 1 3 1 5v3a2 2 0 0 0 2 2h1"/><path d="M12 2a7 7 0 0 1 7 7c0 2-1 3-1 5v3a2 2 0 0 1-2 2h-1"/><path d="M9 22h6"/></svg>
+      </span>
+      PsiqueMind
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav__links">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#profesional">Profesional</a></li>
+        <li><a href="#clinica">Clínica</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
+    </nav>
+    <div class="nav__cta">
+      <a class="btn btn--cta" href="https://wa.me/593979734997?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20una%20evaluaci%C3%B3n%20para%20mi%20hijo%2Fa." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.06h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43-.14-.01-.31-.01-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.88.86-.88 2.07 0 1.22.9 2.4 1.02 2.56.12.17 1.75 2.67 4.25 3.75.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        WhatsApp
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<span id="top"></span>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <span class="eyebrow">Neuropsicología Clínica Infantil</span>
+      <h1>No todo es Autismo o TDAH. Cada niño tiene una historia diferente.</h1>
+      <p class="lead">Acompañamos a las familias a comprender el desarrollo de sus hijos mediante una evaluación profesional basada en evidencia científica. Sin etiquetas apresuradas. Con calma y claridad.</p>
+      <div class="hero__actions">
+        <a class="btn btn--cta btn--lg" href="https://wa.me/593979734997?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20una%20evaluaci%C3%B3n%20para%20mi%20hijo%2Fa." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+          Solicitar información
+        </a>
+        <a class="btn btn--ghost btn--lg" href="#profesional">Conocer al profesional</a>
+      </div>
+      <p class="hero__note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        Atención personalizada · Lunes a viernes de 08:00 a 18:00
+      </p>
+    </div>
+    <div class="hero__media">
+      <img class="media-img" src="../assets/img/sala-evaluacion-hero.webp" width="960" height="1280" loading="eager" fetchpriority="high" alt="Sala de evaluación infantil de PsiqueMind: mesa y sillas para niños, juguetes didácticos y mucha luz natural." />
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMA ============ -->
+<section class="section section--subtle">
+  <div class="container reveal">
+    <span class="eyebrow">Te entendemos</span>
+    <p class="problem__quote">Observar una conducta diferente en tu hijo <strong>no siempre significa</strong> Autismo o TDAH.</p>
+    <p class="lead">Muchas familias llegan con miedo, dudas y demasiada información contradictoria. El primer paso no es diagnosticar: es comprender qué está ocurriendo, con tiempo y con respaldo profesional.</p>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section class="section" id="servicios">
+  <div class="container">
+    <div class="s-head reveal">
+      <span class="eyebrow">Cómo ayudamos</span>
+      <h2>Servicios pensados para comprender, no para etiquetar</h2>
+    </div>
+    <div class="grid grid--3">
+      <article class="card card--hover reveal">
+        <div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M17 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/><path d="M2 20v-1a4 4 0 0 1 4-4h1"/><path d="M14 15h1a4 4 0 0 1 4 4v1"/></svg></div>
+        <h3>Evaluación Neuropsicológica</h3>
+        <p>Un estudio integral del desarrollo, la atención, la memoria y el aprendizaje para entender cómo funciona el cerebro de tu hijo.</p>
+      </article>
+      <article class="card card--hover reveal">
+        <div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6"/><path d="M12 22v-2"/><path d="m17 5-3 3"/><circle cx="12" cy="14" r="4"/></svg></div>
+        <h3>Diagnóstico Diferencial</h3>
+        <p>Distinguimos con precisión entre condiciones del neurodesarrollo y otras causas, evitando conclusiones apresuradas.</p>
+      </article>
+      <article class="card card--hover reveal">
+        <div class="card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 12 5 5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg></div>
+        <h3>Acompañamiento Familiar</h3>
+        <p>Un plan personalizado y orientación clara para la familia en cada etapa del proceso, con empatía y sin tecnicismos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROFESIONAL ============ -->
+<section class="section section--subtle" id="profesional">
+  <div class="container pro">
+    <div class="pro__media reveal">
+      <img class="media-img" src="../assets/img/londres-mora-neuropsicologo.webp" width="888" height="875" loading="lazy" alt="Londres Iván Mora Maquilón, psicólogo especializado en neuropsicología infantil, con bata blanca en su consultorio." />
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Sobre el profesional</span>
+      <h2>Londres Iván Mora Maquilón</h2>
+      <p class="lead">Psicólogo clínico especializado en neuropsicología infantil. Su enfoque une el rigor científico con la calidez humana: comprender la historia de cada niño antes de emitir un diagnóstico.</p>
+      <ul class="pro__list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Licenciado en Psicología — Universidad Estatal de Milagro (UNEMI)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Diplomatura de Posgrado en Neuropsicología Infantil</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Formación continua en neurodesarrollo y neurociencias</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CERTIFICACIONES ============ -->
+<section class="section stats" aria-label="Respaldo profesional">
+  <div class="container">
+    <div class="stats__grid">
+      <div>
+        <div class="stat__num"><span data-count="14">0</span><span class="plus">+</span></div>
+        <div class="stat__label">Certificaciones profesionales</div>
+      </div>
+      <div>
+        <div class="stat__num"><span data-count="100">0</span><span class="plus">%</span></div>
+        <div class="stat__label">Basado en evidencia científica</div>
+      </div>
+      <div>
+        <div class="stat__num"><span data-count="1">0</span></div>
+        <div class="stat__label">Historia única por cada niño</div>
+      </div>
+    </div>
+    <div class="creds">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Neuropsicología Infantil</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Trastornos del Neurodesarrollo</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bioquímica Cerebral</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Neuroimagen</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLÍNICA ============ -->
+<section class="section" id="clinica">
+  <div class="container">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Nuestra clínica</span>
+      <h2>Un espacio tranquilo, limpio y pensado para los niños</h2>
+    </div>
+    <div class="gallery reveal">
+      <div class="tile"><img class="media-img" src="../assets/img/sala-espera.webp" width="1200" height="900" loading="lazy" alt="Sala de espera de PsiqueMind con el logo en la pared, sillón cómodo y luz natural." /></div>
+      <div class="tile"><img class="media-img" src="../assets/img/consultorio-evaluacion.webp" width="1200" height="900" loading="lazy" alt="Consultorio de evaluación con escritorio, sillas y espacio de juego para niños." /></div>
+      <div class="tile"><img class="media-img" src="../assets/img/recepcion.webp" width="900" height="675" loading="lazy" alt="Recepción de PsiqueMind con el logotipo del Centro Neuropsicológico Clínico." /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="section section--subtle" id="proceso">
+  <div class="container">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Cómo trabajamos</span>
+      <h2>Un proceso claro, en cuatro pasos</h2>
+    </div>
+    <ol class="steps reveal">
+      <li class="step"><div class="step__num">1</div><h3>Contacto</h3><p>Nos escribís por WhatsApp y conversamos sobre tu preocupación.</p></li>
+      <li class="step"><div class="step__num">2</div><h3>Evaluación</h3><p>Realizamos un estudio integral y personalizado del desarrollo.</p></li>
+      <li class="step"><div class="step__num">3</div><h3>Diagnóstico</h3><p>Explicamos los resultados con claridad, sin tecnicismos.</p></li>
+      <li class="step"><div class="step__num">4</div><h3>Tratamiento</h3><p>Diseñamos un plan a la medida de tu hijo y tu familia.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Resolvamos tus dudas</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">¿Mi hijo realmente necesita una evaluación?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><div class="faq__a-inner">Si notás dudas sobre su desarrollo, una evaluación te da respuestas claras. No implica un diagnóstico: es comprender qué está ocurriendo para tomar mejores decisiones.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">¿Qué diferencia hay entre un psicólogo y un neuropsicólogo?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><div class="faq__a-inner">La neuropsicología estudia la relación entre el cerebro y la conducta. Permite comprender cómo funcionan la atención, la memoria y el aprendizaje, más allá del comportamiento observable.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">¿Cómo es una evaluación?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><div class="faq__a-inner">Se realiza en un ambiente tranquilo y respetuoso, adaptado a la edad del niño. Combina actividades, observación y pruebas, siempre a su ritmo.</div></div>
+      </div>
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">¿Qué sucede después del diagnóstico?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+        <div class="faq__a"><div class="faq__a-inner">Recibís un informe claro y un plan de acompañamiento personalizado, con orientación concreta para la familia en cada paso.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="section cta-final">
+  <div class="container reveal">
+    <h2>Estamos para acompañarte</h2>
+    <p>Escribinos por WhatsApp y demos juntos el primer paso para comprender la historia de tu hijo.</p>
+    <a class="btn btn--cta btn--lg" href="https://wa.me/593979734997?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20una%20evaluaci%C3%B3n%20para%20mi%20hijo%2Fa." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
+      Solicitar información por WhatsApp
+    </a>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top" style="color:#fff">
+          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2 1 3 1 5v3a2 2 0 0 0 2 2h1"/><path d="M12 2a7 7 0 0 1 7 7c0 2-1 3-1 5v3a2 2 0 0 1-2 2h-1"/><path d="M9 22h6"/></svg></span>
+          PsiqueMind
+        </a>
+        <p>Neuropsicología Clínica Infantil. Comprender antes de diagnosticar.</p>
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3 1-3 3v2H8v3h3v7h3v-7h2.5l.5-3H14v-1c0-.6.4-1 1-1Z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.7 3.9 4 4v3c-1.5 0-2.9-.5-4-1.3V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.5 8A1.5 1.5 0 1 0 6.5 5a1.5 1.5 0 0 0 0 3ZM5 10h3v9H5v-9Zm5 0h3v1.3c.5-.8 1.5-1.5 3-1.5 2.2 0 3 1.4 3 3.7V19h-3v-4.7c0-1.1-.4-1.8-1.4-1.8s-1.6.7-1.6 1.8V19h-3v-9Z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#profesional">Profesional</a></li>
+          <li><a href="#clinica">Clínica</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://wa.me/593979734997" target="_blank" rel="noopener">WhatsApp: 097 973 4997</a></li>
+          <li>Lunes a viernes</li>
+          <li>08:00 – 18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 PsiqueMind. Todos los derechos reservados.</span>
+      <span>Demo — imágenes y datos pendientes de contenido real.</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/593979734997?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20una%20evaluaci%C3%B3n%20para%20mi%20hijo%2Fa." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.06h-.01a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.11.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.36c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01a.92.92 0 0 0-.67.31c-.23.25-.88.86-.88 2.07 0 1.22.9 2.4 1.02 2.56.12.17 1.75 2.67 4.25 3.75.59.26 1.06.41 1.42.52.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+</a>
+
+<script>
+(function(){
+  "use strict";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Navbar solid on scroll */
+  var nav = document.getElementById("nav");
+  var onScroll = function(){ nav.classList.toggle("is-solid", window.scrollY > 24); };
+  onScroll(); window.addEventListener("scroll", onScroll, {passive:true});
+
+  /* Mobile menu */
+  var toggle = document.getElementById("navToggle");
+  toggle.addEventListener("click", function(){
+    var open = nav.getAttribute("data-open") === "true";
+    nav.setAttribute("data-open", String(!open));
+    toggle.setAttribute("aria-expanded", String(!open));
+    toggle.setAttribute("aria-label", open ? "Abrir menú" : "Cerrar menú");
+  });
+  nav.querySelectorAll(".nav__links a").forEach(function(a){
+    a.addEventListener("click", function(){
+      nav.setAttribute("data-open","false");
+      toggle.setAttribute("aria-expanded","false");
+    });
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll(".faq__q").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      document.querySelectorAll(".faq__q").forEach(function(b){
+        b.setAttribute("aria-expanded","false");
+        b.nextElementSibling.style.maxHeight = null;
+      });
+      if(!expanded){
+        btn.setAttribute("aria-expanded","true");
+        var panel = btn.nextElementSibling;
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+
+  /* Scroll reveal */
+  var reveals = document.querySelectorAll(".reveal");
+  if(reduce || !("IntersectionObserver" in window)){
+    reveals.forEach(function(el){ el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, {threshold:.15});
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  /* Counters */
+  var counters = document.querySelectorAll("[data-count]");
+  var animate = function(el){
+    var target = parseInt(el.getAttribute("data-count"),10);
+    if(reduce){ el.textContent = target; return; }
+    var start = null, dur = 1200;
+    var step = function(ts){
+      if(!start) start = ts;
+      var p = Math.min((ts-start)/dur, 1);
+      el.textContent = Math.floor(p*target);
+      if(p<1) requestAnimationFrame(step); else el.textContent = target;
+    };
+    requestAnimationFrame(step);
+  };
+  if("IntersectionObserver" in window){
+    var co = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ animate(e.target); co.unobserve(e.target); } });
+    }, {threshold:.6});
+    counters.forEach(function(el){ co.observe(el); });
+  } else {
+    counters.forEach(animate);
+  }
+})();
+</script>
+</body>
+</html>

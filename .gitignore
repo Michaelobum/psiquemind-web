@@ -1,0 +1,8 @@
+# Material fuente sin procesar (fotos originales, CV) — no va al repo
+Fotos/
+
+# Dependencias / temporales
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
