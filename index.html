@@ -276,8 +276,15 @@ img{max-width:100%;display:block}
   .hero__media{order:-1;max-width:440px;margin-inline:auto;aspect-ratio:16/10;width:100%}
   .hero__media .media-img{object-position:center 30%}
   .grid--3{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(2,1fr);row-gap:2.75rem}
-  .step:nth-child(2)::after{display:none}
+  /* Timeline vertical: en 2x2 la línea se cortaba entre el paso 2 y el 3
+     y el proceso se leía como dos pares sueltos */
+  .steps{grid-template-columns:1fr;gap:0;max-width:520px;margin-inline:auto}
+  .step{display:grid;grid-template-columns:44px 1fr;column-gap:1.25rem;text-align:left;padding-bottom:2.25rem}
+  .step:last-child{padding-bottom:0}
+  .step__num{width:44px;height:44px;font-size:1.05rem;margin:0;grid-row:1/span 2;box-shadow:0 0 0 4px var(--accent-100)}
+  .step h3{grid-column:2;padding-top:.55rem;margin-bottom:.35rem}
+  .step p{grid-column:2;max-width:none;margin-inline:0}
+  .step:not(:last-child)::after{top:50px;bottom:6px;left:21px;right:auto;width:2px;height:auto}
 }
 /* El nav colapsa a menú hamburguesa antes que el resto: con 5 links + CTA
    desborda en tablets verticales (768px) */
@@ -290,13 +297,6 @@ img{max-width:100%;display:block}
 @media (max-width:720px){
   .grid--3,.gallery,.stats__grid,.team{grid-template-columns:1fr}
   .gallery .tile:first-child{grid-column:span 1;grid-row:span 1;aspect-ratio:3/2}
-  .steps{grid-template-columns:1fr;gap:0;max-width:520px;margin-inline:auto}
-  .step{display:grid;grid-template-columns:44px 1fr;column-gap:1.25rem;text-align:left;padding-bottom:2.25rem}
-  .step:last-child{padding-bottom:0}
-  .step__num{width:44px;height:44px;font-size:1.05rem;margin:0;grid-row:1/span 2;box-shadow:0 0 0 4px var(--accent-100)}
-  .step h3{grid-column:2;padding-top:.55rem;margin-bottom:.35rem}
-  .step p{grid-column:2;max-width:none;margin-inline:0}
-  .step:not(:last-child)::after{top:50px;bottom:6px;left:21px;right:auto;width:2px;height:auto}
   .footer__grid,.footer__bottom{grid-template-columns:1fr}
   .footer__bottom{justify-content:flex-start}
 }
