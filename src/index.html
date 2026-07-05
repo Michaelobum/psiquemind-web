@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://www.psiquemind.ec/assets/img/og-cover.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Sala de espera de PsiqueMind, centro de neuropsicología clínica infantil." />
+<meta property="og:image:alt" content="Recepción de PsiqueMind, centro de neuropsicología clínica infantil." />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="PsiqueMind — Neuropsicología Clínica Infantil" />
@@ -178,12 +178,18 @@ img{max-width:100%;display:block}
 .card h3{margin-bottom:.6rem}
 .card p{color:var(--text-2);font-size:1rem}
 
-/* ---------- Profesional ---------- */
-.pro{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-.pro__media{border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--sh-md);aspect-ratio:4/5}
-.pro__list{list-style:none;margin-top:1.5rem;display:grid;gap:.85rem}
-.pro__list li{display:flex;gap:.75rem;color:var(--text-2)}
-.pro__list svg{width:22px;height:22px;color:var(--cta);flex:none;margin-top:.15rem}
+/* ---------- Equipo ---------- */
+.team{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.5rem,4vw,2.5rem);max-width:980px;margin-inline:auto}
+.team__card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;
+  transition:transform .2s ease,box-shadow .2s ease}
+.team__card:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.team__media{aspect-ratio:1/1;overflow:hidden;background:var(--neutral-100)}
+.team__body{padding:1.75rem 2rem 2rem}
+.team__body h3{margin-bottom:.25rem}
+.team__role{color:var(--accent-600);font-weight:600;font-size:.95rem;display:block;margin-bottom:.9rem}
+.team__list{list-style:none;display:grid;gap:.6rem}
+.team__list li{display:flex;gap:.6rem;color:var(--text-2);font-size:.98rem}
+.team__list svg{width:20px;height:20px;color:var(--cta);flex:none;margin-top:.2rem}
 
 /* ---------- Certificaciones (banda) ---------- */
 .stats{background:var(--primary-900);color:#fff}
@@ -263,8 +269,8 @@ img{max-width:100%;display:block}
    Responsive
    ========================================================= */
 @media (max-width:960px){
-  .hero__grid,.pro{grid-template-columns:1fr}
-  .hero__media,.pro__media{order:-1;max-width:440px;margin-inline:auto;aspect-ratio:16/10;width:100%}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__media{order:-1;max-width:440px;margin-inline:auto;aspect-ratio:16/10;width:100%}
   .grid--3{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .step:nth-child(2)::after{display:none}
@@ -274,7 +280,7 @@ img{max-width:100%;display:block}
   .nav__toggle{display:block}
   .nav[data-open="true"] .nav__links{display:flex;position:absolute;top:76px;left:0;right:0;
     flex-direction:column;gap:1.25rem;background:#fff;padding:1.5rem 1.5rem 2rem;border-bottom:1px solid var(--border);box-shadow:var(--sh-md)}
-  .grid--3,.gallery,.stats__grid{grid-template-columns:1fr}
+  .grid--3,.gallery,.stats__grid,.team{grid-template-columns:1fr}
   .gallery .tile:first-child{grid-column:span 1;grid-row:span 1;aspect-ratio:3/2}
   .steps{grid-template-columns:1fr}
   .step:not(:last-child)::after{display:none}
@@ -313,7 +319,19 @@ img{max-width:100%;display:block}
     "name": "Londres Iván Mora Maquilón",
     "jobTitle": "Psicólogo clínico especializado en neuropsicología infantil",
     "alumniOf": "Universidad Estatal de Milagro (UNEMI)"
-  }
+  },
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Londres Iván Mora Maquilón",
+      "jobTitle": "Psicólogo clínico especializado en neuropsicología infantil"
+    },
+    {
+      "@type": "Person",
+      "name": "Amnerys Bajarano",
+      "jobTitle": "Neuropsicóloga clínica infantil"
+    }
+  ]
 }
 </script>
 
@@ -373,7 +391,7 @@ img{max-width:100%;display:block}
     <nav aria-label="Principal">
       <ul class="nav__links">
         <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#profesional">Profesional</a></li>
+        <li><a href="#equipo">Equipo</a></li>
         <li><a href="#clinica">Clínica</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#faq">Preguntas</a></li>
@@ -406,7 +424,7 @@ img{max-width:100%;display:block}
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Z"/></svg>
           Solicitar información
         </a>
-        <a class="btn btn--ghost btn--lg" href="#profesional">Conocer al profesional</a>
+        <a class="btn btn--ghost btn--lg" href="#equipo">Conocer al equipo</a>
       </div>
       <p class="hero__note">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
@@ -414,7 +432,7 @@ img{max-width:100%;display:block}
       </p>
     </div>
     <div class="hero__media">
-      <img class="media-img" src="../assets/img/sala-evaluacion-hero.webp" width="960" height="1280" loading="eager" fetchpriority="high" alt="Sala de evaluación infantil de PsiqueMind: mesa y sillas para niños, juguetes didácticos y mucha luz natural." />
+      <img class="media-img" src="../assets/img/recepcion-hero.webp" width="960" height="1280" loading="eager" fetchpriority="high" alt="Recepción de PsiqueMind con el logotipo del Centro Neuropsicológico Clínico iluminado sobre la pared." />
     </div>
   </div>
 </section>
@@ -455,21 +473,42 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<!-- ============ PROFESIONAL ============ -->
-<section class="section section--subtle" id="profesional">
-  <div class="container pro">
-    <div class="pro__media reveal">
-      <img class="media-img" src="../assets/img/londres-mora-neuropsicologo.webp" width="888" height="875" loading="lazy" alt="Londres Iván Mora Maquilón, psicólogo especializado en neuropsicología infantil, con bata blanca en su consultorio." />
+<!-- ============ EQUIPO ============ -->
+<section class="section section--subtle" id="equipo">
+  <div class="container">
+    <div class="s-head center reveal">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Dos especialistas, una misma forma de mirar a cada niño</h2>
+      <p class="lead">Rigor científico y calidez humana: comprender la historia de cada niño antes de emitir un diagnóstico.</p>
     </div>
-    <div class="reveal">
-      <span class="eyebrow">Sobre el profesional</span>
-      <h2>Londres Iván Mora Maquilón</h2>
-      <p class="lead">Psicólogo clínico especializado en neuropsicología infantil. Su enfoque une el rigor científico con la calidez humana: comprender la historia de cada niño antes de emitir un diagnóstico.</p>
-      <ul class="pro__list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Licenciado en Psicología — Universidad Estatal de Milagro (UNEMI)</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Diplomatura de Posgrado en Neuropsicología Infantil</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Formación continua en neurodesarrollo y neurociencias</li>
-      </ul>
+    <div class="team">
+      <article class="team__card reveal">
+        <div class="team__media">
+          <img class="media-img" src="../assets/img/londres-mora-neuropsicologo.webp" width="888" height="875" loading="lazy" alt="Londres Iván Mora Maquilón, psicólogo especializado en neuropsicología infantil, con bata blanca en su consultorio." />
+        </div>
+        <div class="team__body">
+          <h3>Londres Iván Mora Maquilón</h3>
+          <span class="team__role">Psicólogo clínico · Neuropsicología infantil</span>
+          <ul class="team__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Licenciado en Psicología — Universidad Estatal de Milagro (UNEMI)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Diplomatura de Posgrado en Neuropsicología Infantil</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Formación continua en neurodesarrollo y neurociencias</li>
+          </ul>
+        </div>
+      </article>
+      <article class="team__card reveal">
+        <div class="team__media">
+          <img class="media-img" src="../assets/img/amnerys-bajarano-neuropsicologa.webp" width="900" height="830" loading="lazy" alt="Amnerys Bajarano, neuropsicóloga clínica infantil, en la sala de terapia infantil de PsiqueMind." />
+        </div>
+        <div class="team__body">
+          <h3>Amnerys Bajarano</h3>
+          <span class="team__role">Neuropsicóloga clínica infantil</span>
+          <ul class="team__list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Evaluación e intervención del neurodesarrollo infantil</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Acompañamiento cercano a niños y familias</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -479,8 +518,8 @@ img{max-width:100%;display:block}
   <div class="container">
     <div class="stats__grid">
       <div>
-        <div class="stat__num"><span data-count="14">0</span><span class="plus">+</span></div>
-        <div class="stat__label">Certificaciones profesionales</div>
+        <div class="stat__num"><span data-count="2">0</span></div>
+        <div class="stat__label">Especialistas en neuropsicología infantil</div>
       </div>
       <div>
         <div class="stat__num"><span data-count="100">0</span><span class="plus">%</span></div>
@@ -508,9 +547,9 @@ img{max-width:100%;display:block}
       <h2>Un espacio tranquilo, limpio y pensado para los niños</h2>
     </div>
     <div class="gallery reveal">
+      <div class="tile"><img class="media-img" src="../assets/img/consultorio-completo.webp" width="1200" height="900" loading="lazy" alt="Consultorio de PsiqueMind con escritorio, sofá y rincón de juego para niños junto a la ventana." /></div>
+      <div class="tile"><img class="media-img" src="../assets/img/rincon-infantil.webp" width="960" height="1280" loading="lazy" alt="Rincón infantil con mesa de trabajo, sillas de colores y material didáctico en repisas iluminadas." /></div>
       <div class="tile"><img class="media-img" src="../assets/img/sala-espera.webp" width="1200" height="900" loading="lazy" alt="Sala de espera de PsiqueMind con el logo en la pared, sillón cómodo y luz natural." /></div>
-      <div class="tile"><img class="media-img" src="../assets/img/consultorio-evaluacion.webp" width="1200" height="900" loading="lazy" alt="Consultorio de evaluación con escritorio, sillas y espacio de juego para niños." /></div>
-      <div class="tile"><img class="media-img" src="../assets/img/recepcion.webp" width="900" height="675" loading="lazy" alt="Recepción de PsiqueMind con el logotipo del Centro Neuropsicológico Clínico." /></div>
     </div>
   </div>
 </section>
@@ -597,7 +636,7 @@ img{max-width:100%;display:block}
         <h4>Navegación</h4>
         <ul>
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#profesional">Profesional</a></li>
+          <li><a href="#equipo">Equipo</a></li>
           <li><a href="#clinica">Clínica</a></li>
           <li><a href="#faq">Preguntas</a></li>
         </ul>
