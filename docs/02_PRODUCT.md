@@ -122,8 +122,8 @@ El sitio debe comunicar claramente que PsiqueMind:
 - Basa sus decisiones en evidencia científica.
 - Trabaja con las familias.
 - Personaliza cada proceso.
-- Cuenta con amplia formación profesional.
-- Posee múltiples certificaciones.
+- Cuenta con un equipo de dos especialistas en neuropsicología infantil.
+- Posee formación especializada y en constante actualización.
 - Atiende en un ambiente profesional y acogedor.
 
 ---
@@ -146,7 +146,7 @@ Existe un camino para entender lo que ocurre.
 
 El usuario podrá:
 
-Conocer al profesional.
+Conocer al equipo.
 
 Conocer la clínica.
 
@@ -190,7 +190,7 @@ Mensaje principal.
 
 Generar confianza.
 
-Presentación del profesional.
+Presentación del equipo.
 
 Certificaciones.
 
@@ -310,7 +310,7 @@ Número:
 
 Conocer servicios.
 
-Conocer al profesional.
+Conocer al equipo.
 
 Ver la clínica.
 
@@ -386,7 +386,7 @@ La página será considerada exitosa cuando un padre pueda responder afirmativam
 
 ✔ Comprendí qué hace PsiqueMind.
 
-✔ Confío en el profesional.
+✔ Confío en el equipo.
 
 ✔ Entiendo que no todo comportamiento implica Autismo o TDAH.
 

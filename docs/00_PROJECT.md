@@ -53,7 +53,7 @@ La primera versión incluirá:
 - FAQ
 - CTA
 - Información institucional
-- Presentación del profesional
+- Presentación del equipo (dos especialistas)
 - Presentación de la clínica
 - Servicios
 - Fotografías reales
