@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>PsiqueMind — Neuropsicología Clínica Infantil</title>
 <meta name="description" content="No todo es Autismo o TDAH. Cada niño tiene una historia diferente. Evaluación neuropsicológica infantil basada en evidencia científica." />
 
@@ -121,14 +121,15 @@ img{max-width:100%;display:block}
 /* ---------- Navbar ---------- */
 .nav{position:sticky;top:0;z-index:100;transition:background-color .25s ease,box-shadow .25s ease,border-color .25s ease;
   border-bottom:1px solid transparent}
-.nav.is-solid{background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(12px);
+.nav.is-solid{background:rgba(255,255,255,.92);-webkit-backdrop-filter:saturate(180%) blur(12px);
+  backdrop-filter:saturate(180%) blur(12px);
   border-bottom-color:var(--border);box-shadow:var(--sh-sm)}
 .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:76px}
-.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-h);font-weight:600;
-  font-size:1.2rem;color:var(--primary-800);letter-spacing:-.01em}
-.brand__mark{width:36px;height:36px;border-radius:var(--r-md);display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--primary-700),var(--accent-600));color:#fff;flex:none}
-.brand__mark svg{width:20px;height:20px}
+.brand{display:flex;align-items:center;gap:.6rem;font-family:var(--font-h);font-weight:600;font-size:1.05rem}
+.brand__icon{width:32px;height:32px;flex:none}
+.brand__word{text-transform:uppercase;letter-spacing:.07em;color:var(--primary-800)}
+.brand__word b{color:var(--accent-600);font-weight:600}
+.footer .brand__word{color:#fff}
 .nav__links{display:flex;align-items:center;gap:2rem;list-style:none}
 .nav__links a{color:var(--text-2);font-weight:500;font-family:var(--font-h);font-size:.95rem;position:relative;padding-block:.25rem}
 .nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--accent-600);transition:width .2s ease}
@@ -251,7 +252,8 @@ img{max-width:100%;display:block}
   display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--neutral-500)}
 
 /* ---------- WhatsApp flotante ---------- */
-.wa-float{position:fixed;right:1.25rem;bottom:1.25rem;z-index:200;width:60px;height:60px;
+.wa-float{position:fixed;right:calc(1.25rem + env(safe-area-inset-right,0px));
+  bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:200;width:60px;height:60px;
   border-radius:var(--r-full);background:var(--whatsapp);color:#fff;display:grid;place-items:center;
   box-shadow:0 8px 24px rgba(37,211,102,.4);transition:transform .2s ease}
 .wa-float:hover{transform:scale(1.06)}
@@ -271,21 +273,31 @@ img{max-width:100%;display:block}
 @media (max-width:960px){
   .hero__grid{grid-template-columns:1fr}
   .hero__media{order:-1;max-width:440px;margin-inline:auto;aspect-ratio:16/10;width:100%}
+  .hero__media .media-img{object-position:center 30%}
   .grid--3{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr)}
   .step:nth-child(2)::after{display:none}
 }
-@media (max-width:720px){
-  .nav__links,.nav__cta .btn--ghost{display:none}
+/* El nav colapsa a menú hamburguesa antes que el resto: con 5 links + CTA
+   desborda en tablets verticales (768px) */
+@media (max-width:900px){
+  .nav__links{display:none}
   .nav__toggle{display:block}
   .nav[data-open="true"] .nav__links{display:flex;position:absolute;top:76px;left:0;right:0;
     flex-direction:column;gap:1.25rem;background:#fff;padding:1.5rem 1.5rem 2rem;border-bottom:1px solid var(--border);box-shadow:var(--sh-md)}
+}
+@media (max-width:720px){
   .grid--3,.gallery,.stats__grid,.team{grid-template-columns:1fr}
   .gallery .tile:first-child{grid-column:span 1;grid-row:span 1;aspect-ratio:3/2}
   .steps{grid-template-columns:1fr}
   .step:not(:last-child)::after{display:none}
   .footer__grid,.footer__bottom{grid-template-columns:1fr}
   .footer__bottom{justify-content:flex-start}
+}
+@media (max-width:480px){
+  .hero__actions{flex-direction:column;align-items:stretch}
+  .hero__actions .btn{width:100%}
+  .cta-final .btn{width:100%;max-width:420px}
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -383,10 +395,18 @@ img{max-width:100%;display:block}
 <header class="nav" id="nav">
   <div class="container nav__inner">
     <a class="brand" href="#top" aria-label="PsiqueMind, inicio">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2 1 3 1 5v3a2 2 0 0 0 2 2h1"/><path d="M12 2a7 7 0 0 1 7 7c0 2-1 3-1 5v3a2 2 0 0 1-2 2h-1"/><path d="M9 22h6"/></svg>
-      </span>
-      PsiqueMind
+      <svg class="brand__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <g stroke-linecap="round" stroke-width="3">
+          <path d="M24 24 39 19" stroke="#13375A"/><path d="M24 24 33 9" stroke="#2FA3B4"/>
+          <path d="M24 24 12 12" stroke="#56A944"/><path d="M24 24 8 27" stroke="#2C74A6"/>
+          <path d="M24 24 15 38" stroke="#2FA3B4"/><path d="M24 24 33 38" stroke="#56A944"/>
+        </g>
+        <circle cx="39" cy="19" r="5" fill="#13375A"/><circle cx="33" cy="9" r="4" fill="#2FA3B4"/>
+        <circle cx="12" cy="12" r="4.5" fill="#56A944"/><circle cx="8" cy="27" r="3.5" fill="#2C74A6"/>
+        <circle cx="15" cy="38" r="4" fill="#2FA3B4"/><circle cx="33" cy="38" r="3.5" fill="#56A944"/>
+        <circle cx="24" cy="24" r="5.5" fill="#1B4A72"/>
+      </svg>
+      <span class="brand__word">Psique<b>Mind</b></span>
     </a>
     <nav aria-label="Principal">
       <ul class="nav__links">
@@ -620,9 +640,19 @@ img{max-width:100%;display:block}
   <div class="container">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a class="brand" href="#top" style="color:#fff">
-          <span class="brand__mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2 1 3 1 5v3a2 2 0 0 0 2 2h1"/><path d="M12 2a7 7 0 0 1 7 7c0 2-1 3-1 5v3a2 2 0 0 1-2 2h-1"/><path d="M9 22h6"/></svg></span>
-          PsiqueMind
+        <a class="brand" href="#top">
+          <svg class="brand__icon" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <g stroke-linecap="round" stroke-width="3">
+              <path d="M24 24 39 19" stroke="#5A87B0"/><path d="M24 24 33 9" stroke="#2FA3B4"/>
+              <path d="M24 24 12 12" stroke="#56A944"/><path d="M24 24 8 27" stroke="#2C74A6"/>
+              <path d="M24 24 15 38" stroke="#2FA3B4"/><path d="M24 24 33 38" stroke="#56A944"/>
+            </g>
+            <circle cx="39" cy="19" r="5" fill="#5A87B0"/><circle cx="33" cy="9" r="4" fill="#2FA3B4"/>
+            <circle cx="12" cy="12" r="4.5" fill="#56A944"/><circle cx="8" cy="27" r="3.5" fill="#2C74A6"/>
+            <circle cx="15" cy="38" r="4" fill="#2FA3B4"/><circle cx="33" cy="38" r="3.5" fill="#56A944"/>
+            <circle cx="24" cy="24" r="5.5" fill="#43B7C6"/>
+          </svg>
+          <span class="brand__word">Psique<b>Mind</b></span>
         </a>
         <p>Neuropsicología Clínica Infantil. Comprender antes de diagnosticar.</p>
         <div class="footer__social">
