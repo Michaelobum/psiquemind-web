@@ -260,8 +260,9 @@ img{max-width:100%;display:block}
 .wa-float{position:fixed;right:calc(1.25rem + env(safe-area-inset-right,0px));
   bottom:calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:200;width:60px;height:60px;
   border-radius:var(--r-full);background:var(--whatsapp);color:#fff;display:grid;place-items:center;
-  box-shadow:0 8px 24px rgba(37,211,102,.4);transition:transform .2s ease}
+  box-shadow:0 8px 24px rgba(37,211,102,.4);transition:transform .2s ease,opacity .2s ease}
 .wa-float:hover{transform:scale(1.06)}
+.wa-float--hidden{opacity:0;transform:scale(.6);pointer-events:none}
 .wa-float svg{width:32px;height:32px}
 
 /* ---------- Reveal ---------- */
@@ -790,6 +791,18 @@ img{max-width:100%;display:block}
     counters.forEach(function(el){ co.observe(el); });
   } else {
     counters.forEach(animate);
+  }
+
+  /* Ocultar el WhatsApp flotante cuando ya hay un CTA de WhatsApp en pantalla */
+  var waFloat = document.querySelector(".wa-float");
+  var waCtas = document.querySelectorAll(".hero__actions .btn--cta, .cta-final .btn--cta");
+  if(waFloat && waCtas.length && "IntersectionObserver" in window){
+    var waVisible = new Set();
+    var waIo = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ e.isIntersecting ? waVisible.add(e.target) : waVisible.delete(e.target); });
+      waFloat.classList.toggle("wa-float--hidden", waVisible.size > 0);
+    }, {threshold:.4});
+    waCtas.forEach(function(c){ waIo.observe(c); });
   }
 })();
 </script>
