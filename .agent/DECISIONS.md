@@ -98,6 +98,20 @@ No se dejará para fases posteriores.
 
 ---
 
+## 2026-07-14
+
+### Analítica
+
+Se utilizará Google Analytics 4 como herramienta de analítica.
+
+Motivo: es gratuita, cubre el volumen esperado y permite medir visitas, fuente de tráfico y clicks a WhatsApp. Se integra con Google Ads si en el futuro se pauta.
+
+Impacto: cada link a WhatsApp lleva un atributo `data-cta` (nav, hero, cta_final, footer, flotante) y dispara el evento `whatsapp_click` con el parámetro `cta_location`, lo que permite saber cuál botón convierte.
+
+ID de medición: `G-194N0YPB5L` (configurado en `public/index.html` el 2026-07-14).
+
+---
+
 ## Regla para futuras decisiones
 
 Cada nueva decisión importante deberá registrarse aquí.
